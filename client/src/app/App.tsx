@@ -1,5 +1,15 @@
 import React, { useState, useEffect } from "react";
 
+import {
+  AppContainer,
+  Title,
+  ToggleLabel,
+  ToggleCheckbox,
+  SensorList,
+  SensorItem,
+  SensorButton,
+} from "./styles";
+
 type Sensor = {
   id: string;
   name: string;
@@ -76,33 +86,45 @@ const App: React.FC = () => {
     : sensors.filter((sensor) => sensor.connected);
 
   return (
-    <div>
-      <h1>IoT Sensors</h1>
-      <label>
-        <input
+    <AppContainer>
+      <Title>Sensors</Title>
+      <ToggleLabel>
+        <ToggleCheckbox
           type="checkbox"
           checked={showAllSensors}
           onChange={handleToggleSensors}
         />
         Show All Sensors
-      </label>
-      <ul>
+      </ToggleLabel>
+      <SensorList>
         {filteredSensors.map((sensor) => (
-          <li key={sensor.id}>
-            <strong>{sensor.name}</strong>: {sensor.value} {sensor.unit}
+          <SensorItem key={sensor.id}>
+            <p>
+              <strong>{sensor.name}</strong>
+            </p>
+            <p>
+              Value: {sensor.value} {sensor.unit}
+            </p>
+
             {sensor.connected ? (
-              <button onClick={() => handleDisconnectSensor(sensor.id)}>
+              <SensorButton
+                data-connected
+                onClick={() => handleDisconnectSensor(sensor.id)}
+              >
                 Disconnect
-              </button>
+              </SensorButton>
             ) : (
-              <button onClick={() => handleConnectSensor(sensor.id)}>
+              <SensorButton
+                data-connected={false}
+                onClick={() => handleConnectSensor(sensor.id)}
+              >
                 Connect
-              </button>
+              </SensorButton>
             )}
-          </li>
+          </SensorItem>
         ))}
-      </ul>
-    </div>
+      </SensorList>
+    </AppContainer>
   );
 };
 
