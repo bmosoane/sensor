@@ -66,3 +66,5 @@ The Web Socket endpoint accepts the following messages, where `id` is the sensor
   - I struggled with the initial port for the server, even after killing everything. So I changed it to a value of 8000. Also coming up with a potential UI for everything, it started pretty basic but overral some sort of look and feel to aim for would have been great.
 - How can we further improve the user experience?
   - On my side, I know there is more I can do to improve experience. Font size, different cards, and custom checkbox item. Also possibly a function to read the units to handle superscript. Maybe add an interval for the open connection, to slow down how many calls are happening, which will look better for the user, as currently values keep changing.
+
+## Application
