@@ -67,4 +67,10 @@ The Web Socket endpoint accepts the following messages, where `id` is the sensor
 - How can we further improve the user experience?
   - On my side, I know there is more I can do to improve experience. Font size, different cards, and custom checkbox item. Also possibly a function to read the units to handle superscript. Maybe add an interval for the open connection, to slow down how many calls are happening, which will look better for the user, as currently values keep changing.
 
-## Application
+## Demo
+
+[![Watch the video]](https://github.com/bmosoane/sensor/assets/20299282/06dc5a77-b72c-46fc-a333-43cba4e8d500)
+
+
+
+
