@@ -1,3 +1,5 @@
+type SensorRecord = Record<string, Sensor>;
+
 type Sensor = {
   id: string;
   name: string;
@@ -11,4 +13,4 @@ type WebSocketMessage = {
   id: string;
 };
 
-export type { Sensor, WebSocketMessage };
+export type { Sensor, SensorRecord, WebSocketMessage };

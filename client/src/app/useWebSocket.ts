@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import { Sensor } from "./types";
+import { Sensor, SensorRecord } from "./types";
 
 const WEBSOCKET_URL = "ws://localhost:8000";
 
 const useWebSocket = () => {
-  const [sensors, setSensors] = useState<Sensor[]>([]);
+  const [sensors, setSensors] = useState<SensorRecord>({});
   const [socket, setSocket] = useState<WebSocket | null>(null);
 
   useEffect(() => {
@@ -18,16 +18,16 @@ const useWebSocket = () => {
       const message = JSON.parse(event.data) as Sensor;
 
       setSensors((prevSensors) => {
-        const updatedSensors = prevSensors.map((sensor) =>
-          sensor.id === message.id ? { ...sensor, ...message } : sensor
-        );
+        const newSensors = { ...prevSensors };
+        newSensors[message.id] = {
+          ...message,
+          value:
+            message.value !== null
+              ? message.value
+              : prevSensors[message.id].value,
+        };
 
-        // If the sensor with the same ID doesn't exist, add it to the array
-        if (!updatedSensors.some((sensor) => sensor.id === message.id)) {
-          updatedSensors.push(message);
-        }
-
-        return updatedSensors;
+        return newSensors;
       });
     };
 
@@ -42,7 +42,7 @@ const useWebSocket = () => {
     };
   }, []);
 
-  return { sensors, socket };
+  return { socket, sensorsList: Object.values(sensors) };
 };
 
 export default useWebSocket;
