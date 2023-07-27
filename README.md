@@ -28,6 +28,16 @@ From the `/server` directory in your terminal or IDE run the following command:
 npm install && npm start
 ```
 
+## Client App
+
+Once the server is running
+
+From the `/client` directory in your terminal or IDE run the following command:
+
+```bash
+npm install && npm start
+```
+
 ### API
 
 On the client connection event, the API will stream back to the current state of the application in the format:
@@ -70,7 +80,3 @@ The Web Socket endpoint accepts the following messages, where `id` is the sensor
 ## Demo
 
 [![Watch the video]](https://github.com/bmosoane/sensor/assets/20299282/06dc5a77-b72c-46fc-a333-43cba4e8d500)
-
-
-
-
